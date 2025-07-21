@@ -17,6 +17,9 @@ interface TotalNutrition {
 interface NutritionInfo {
   total: TotalNutrition;
   message: string;
+  good_things: string[];
+  bad_things: string[];
+  tips: string[];
 }
 
 export async function POST(request: NextRequest) {
@@ -74,6 +77,10 @@ export async function POST(request: NextRequest) {
               
               For the message field, provide a brief description like: "Grilled salmon with asparagus and cherry tomatoes - a healthy, protein-rich meal"
               
+              For good_things, list 2-3 positive nutritional aspects (e.g., ["High in protein", "Good source of fiber", "Rich in omega-3"])
+              For bad_things, list 1-2 potential concerns (e.g., ["High in sodium", "Too many calories", "High in saturated fat"])
+              For tips, provide 2-3 actionable suggestions for improvement (e.g., ["Try using less salt", "Consider a smaller portion", "Add more vegetables"])
+              
               DO NOT provide individual food item breakdowns - only the total values and food names array.
               
               Return the response as a JSON object with this structure:
@@ -86,7 +93,10 @@ export async function POST(request: NextRequest) {
                   "fat": 0,
                   "protein": 0
                 },
-                "message": "Brief meal description"
+                "message": "Brief meal description",
+                "good_things": ["example1", "example2"],
+                "bad_things": ["example1", "example2"],
+                "tips": ["example1", "example2"]
               }`,
             },
             {
